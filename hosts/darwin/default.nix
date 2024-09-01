@@ -5,7 +5,7 @@ let user = "zijin"; in
 {
 
   imports = [
-    ../../modules/darwin/home-manager.nix
+    ../../modules/darwin/default.nix
     ../../modules/darwin/system.nix
     ../../modules/shared
     ../../modules/shared/cachix
@@ -31,9 +31,6 @@ let user = "zijin"; in
       experimental-features = nix-command flakes
     '';
   };
-
-  # Turn off NIX_PATH warnings now that we're using flakes
-  system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
   environment.systemPackages = with pkgs; [

@@ -2,13 +2,6 @@
 
 let
   user = "zijin";
-  # Define the content of your file as a derivation
-  myEmacsLauncher = pkgs.writeScript "emacs-launcher.command" ''
-    #!/bin/sh
-    emacsclient -c -n &
-  '';
-  sharedFiles = import ../shared/files.nix { inherit config pkgs; };
-  additionalFiles = import ./files.nix { inherit user config pkgs; };
 in
 {
   imports = [
@@ -43,19 +36,7 @@ in
   # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;
-    users.${user} = { pkgs, config, lib, ... }:{
-      home = {
-        enableNixpkgsReleaseCheck = false;
-        packages = pkgs.callPackage ./packages.nix {};
-        file = lib.mkMerge [
-          sharedFiles
-          additionalFiles
-          { "emacs-launcher.command".source = myEmacsLauncher; }
-        ];
-        stateVersion = "23.11";
-      };
-      programs = {} // import ../shared/programs.nix { inherit config pkgs lib; };
-    };
+    users.${user} = import ./home-manager.nix;
   };
 
   # Fully declarative dock using the latest from Nix Store
