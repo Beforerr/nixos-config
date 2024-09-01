@@ -6,6 +6,7 @@ let user = "zijin"; in
 
   imports = [
     ../../modules/darwin/home-manager.nix
+    ../../modules/darwin/system.nix
     ../../modules/shared
     ../../modules/shared/cachix
   ];
@@ -49,45 +50,5 @@ let user = "zijin"; in
     ];
     StandardErrorPath = "/tmp/emacs.err.log";
     StandardOutPath = "/tmp/emacs.out.log";
-  };
-
-  system = {
-    stateVersion = 4;
-
-    defaults = {
-      NSGlobalDomain = {
-        AppleShowAllExtensions = true;
-        ApplePressAndHoldEnabled = false;
-
-        # 120, 90, 60, 30, 12, 6, 2
-        KeyRepeat = 2;
-
-        # 120, 94, 68, 35, 25, 15
-        InitialKeyRepeat = 15;
-
-        "com.apple.mouse.tapBehavior" = 1;
-        "com.apple.sound.beep.volume" = 0.0;
-        "com.apple.sound.beep.feedback" = 0;
-        "com.apple.swipescrolldirection" = true;
-      };
-
-      dock = {
-        autohide = true;
-        autohide-delay = 0.0;
-        autohide-time-modifier = 0.0; # Remove the animation when hiding/showing the Dock
-        show-recents = false;
-        launchanim = true;
-        orientation = "bottom";
-      };
-
-      finder = {
-        _FXShowPosixPathInTitle = false;
-      };
-
-      trackpad = {
-        Clicking = true;
-        TrackpadThreeFingerDrag = true;
-      };
-    };
   };
 }
