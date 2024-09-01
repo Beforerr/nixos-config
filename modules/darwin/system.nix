@@ -18,7 +18,6 @@
         AppleShowAllExtensions = true;
         ApplePressAndHoldEnabled = false;
         _HIHideMenuBar = true;
-        
 
         # 120, 90, 60, 30, 12, 6, 2
         KeyRepeat = 2;
@@ -43,13 +42,16 @@
 
       finder = {
         FXDefaultSearchScope = "SCcf";
+        FXPreferredViewStyle = "clmv";
+        FXEnableExtensionChangeWarning = false; # disable warning when changing file extension
         _FXShowPosixPathInTitle = false;
-        ShowPathbar = true; # show path bar
-        ShowStatusBar = true; # show status bar
+        ShowPathbar = false;
+        ShowStatusBar = false;
       };
 
       trackpad = {
         Clicking = true;
+        TrackpadRightClick = true; # enable two finger right click
         TrackpadThreeFingerDrag = true;
       };
       
@@ -57,29 +59,15 @@
       # Incomplete list of macOS `defaults` commands :
       #   https://github.com/yannbertrand/macos-defaults
       CustomUserPreferences = {
-        ".GlobalPreferences" = {
-          # automatically switch to a new space when switching to the application
-          AppleSpacesSwitchOnActivate = true;
-        };
-        NSGlobalDomain = {
-          # Add a context menu item for showing the Web Inspector in web views
-          WebKitDeveloperExtras = true;
-        };
         "com.apple.finder" = {
-          AppleShowAllFiles = true;
-          ShowExternalHardDrivesOnDesktop = true;
-          ShowHardDrivesOnDesktop = true;
-          ShowMountedServersOnDesktop = true;
-          ShowRemovableMediaOnDesktop = true;
           _FXSortFoldersFirst = true;
-          # When performing a search, search the current folder by default
-          FXDefaultSearchScope = "SCcf";
         };
         "com.apple.desktopservices" = {
           # Avoid creating .DS_Store files on network or USB volumes
           DSDontWriteNetworkStores = true;
           DSDontWriteUSBStores = true;
         };
+      };
     };
   };
 }
